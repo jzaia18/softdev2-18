@@ -8,9 +8,12 @@ def frequency(word):
 def total_frequency(word_list):
   return sum(map(frequency,word_list))
 
+def frequency_and_word(word):
+  return [word, len(filter(lambda w: w.lower() in word.lower(), book))]
+
 def most_used():
-  f = map(frequency, book)
-  return reduce(lambda a, b: a if a > b else b, f)
+  f = map(frequency_and_word, ["juliet", "romeo"])
+  return reduce(lambda a, b: a[1] if a[1] > b[1] else b[1], f)
 
 print frequency("juliet")
 print frequency("romeo")
